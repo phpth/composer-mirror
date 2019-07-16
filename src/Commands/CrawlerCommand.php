@@ -22,6 +22,10 @@ use ZenCodex\ComposerMirror\Log;
 
 class CrawlerCommand extends Command
 {
+    const IGNORE_PACKAGES = [
+        'acosf/archersys',
+    ];
+
     protected function configure()
     {
         $this
@@ -172,6 +176,10 @@ class CrawlerCommand extends Command
 
             foreach ($list as $packageName => $provider) {
                 $app->terminated and exit();
+                if (in_array($packageName, self::IGNORE_PACKAGES)) {
+                    Log::warn("Ignore package: $packageName");
+                    continue;
+                }
 
 //            $progressBar->advance();
                 ++$sum;
@@ -281,8 +289,21 @@ class CrawlerCommand extends Command
                     // 保存 github/bitbucket ... 真实对应下载地址
                     $zipFile = $config->distdir . $packageName . '/' . $vMeta['dist']['reference'] . '.zip';
                     if (!file_exists($zipFile)) {
-                        $fileUtils->storeFile($zipFile, $vMeta['dist']['url']);
-                        App::pushJob2Task($zipFile);
+                        if ($app->isPush2Cloud) {
+                            $fileUtils->storeFile($zipFile, $vMeta['dist']['url']);
+                            App::pushJob2Task($zipFile);
+                        } else {
+                            try {
+                                $handle = fopen($zipFile, 'w');
+                                $client = new Client([
+                                    RequestOptions::SINK => $handle,
+                                    RequestOptions::TIMEOUT => App::getInstance()->getConfig()->timeout]
+                                );
+                                $client->get($vMeta['dist']['url']);
+                            } finally {
+                                fclose($handle);
+                            }
+                        }
 //                    $app->getConfig()->isPrefetch ? $app->getCloud()->prefetchDistFile($zipFile) : $app->getCloud()->pushOneFile($zipFile);
                     }
                 }

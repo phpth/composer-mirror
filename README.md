@@ -1,8 +1,32 @@
+<p align="center">
+  <br>
+  <b>创造不息，交付不止</b>
+  <br>
+  <a href="http://yousails.mikecrm.com/4Dh5uWU">
+    <img src="https://yousails.com/banners/brand.png" width=350>
+  </a>
+</p>
+
 ## 镜像的安装部署
 
-如果你想独立安装及部署镜像站点，详见 [INSTALL.md](INSTALL.md)
+ZComposer 全量镜像已经开源了，禅师的微信号 zencodex，可以撩撩
 
-感谢 [Laravel China 社区](https://learnku.com/laravel) 的 summer，是他提出做镜像的建议，还有社区的核心小伙伴们，是他们在早期测试，给了众多的支持 🙏
+[![stars](https://img.shields.io/github/stars/zencodex/composer-mirror.svg)](https://github.com/zencodex/composer-mirror)
+[![forks](https://img.shields.io/github/forks/zencodex/composer-mirror.svg)](https://github.com/zencodex/composer-mirror)
+[![build](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://github.com/zencodex/composer-mirror)
+[![issues](https://img.shields.io/github/issues/zencodex/composer-mirror.svg)](https://github.com/zencodex/composer-mirror)
+[![MIT](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://github.com/zencodex/composer-mirror)
+
+本仓库是 [Composer 中文镜像 / Packagist 中国全量镜像](https://learnku.com/laravel/composer) 的源码，如果你想独立安装及部署镜像站点，详见 [INSTALL.md](https://github.com/zencodex/composer-mirror/blob/master/INSTALL.md) 。
+
+目前使用此源码的镜像有：
+
+- [Laravel China 镜像](https://learnku.com/laravel/composer) - 由 [又拍云赞助](https://www.upyun.com/products/prismcdn?utm_source=laravelchina&utm_medium=banner&utm_campaign=prismcdn&utm_content=0503)
+- 长期更新...
+
+> 如果你使用了此源码构建镜像，请修改此项目的 readme 让我们知道，让更多人使用上你的镜像。
+
+感谢 [Laravel China 社区](https://learnku.com/laravel) 的 Summer，是他提出做镜像的建议，还有社区的核心小伙伴们，是他们在早期测试，给了众多的支持 🙏
 
 ## 镜像的使用方法
 
